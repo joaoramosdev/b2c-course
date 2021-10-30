@@ -1,0 +1,78 @@
+/**
+* Script file for use in the Script pipelet node.
+*
+*   @input OrdersIn : Object
+* Use for get the orders which has "NOT_EXPORTED" status and write them to an xml file
+*/
+ 
+var File = require('dw/io/File');
+var FileWriter = require('dw/io/FileWriter');
+var XMLStreamWriter = require('dw/io/XMLStreamWriter');
+var OrderMgr = require('dw/order/OrderMgr');
+var Order = require('dw/order/Order');
+ 
+function execute(args) : Number
+{
+ 
+    // get orders
+    var orders = OrderMgr.searchOrders('exportStatus={0}', 'creationDate desc', Order.EXPORT_STATUS_NOTEXPORTED);
+     
+    // prepare xml file
+    var file = new File(File.IMPEX + File.SEPARATOR + 'src' + File.SEPARATOR + 'order' + File.SEPARATOR + 'orders.xml');
+    var fileWriter = new FileWriter(file, "UTF-8");
+    var xsw = new XMLStreamWriter(fileWriter);
+ 
+    // write orders to xml file
+    xsw.writeStartElement("orders");
+    xsw.writeAttribute("xmlns", "http://www.demandware.com/xml/impex/order/2006-10-31");
+ 
+    while(orders.hasNext()) {
+ 
+        var order = orders.next();
+ 
+        xsw.writeStartElement("order");
+        xsw.writeAttribute("order-no", order.orderNo);
+         
+            xsw.writeStartElement("order-date");
+                xsw.writeCharacters(order.creationDate);
+            xsw.writeEndElement();
+ 
+            xsw.writeStartElement("customer");
+                xsw.writeStartElement("customer-no");
+                    xsw.writeCharacters(order.customerNo);
+                xsw.writeEndElement();
+                xsw.writeStartElement("customer-name");
+                    xsw.writeCharacters(order.customerName);
+                xsw.writeEndElement();
+                xsw.writeStartElement("customer-email");
+                    xsw.writeCharacters(order.customerEmail);
+                xsw.writeEndElement();
+            xsw.writeEndElement(); // customer
+ 
+            xsw.writeStartElement("totals");
+                xsw.writeStartElement("order-total");
+                    xsw.writeStartElement("net-price");
+                        xsw.writeCharacters(order.totalNetPrice);
+                    xsw.writeEndElement();
+                    xsw.writeStartElement("tax");
+                        xsw.writeCharacters(order.totalTax);
+                    xsw.writeEndElement();
+                    xsw.writeStartElement("gross-price");
+                        xsw.writeCharacters(order.totalGrossPrice);
+                    xsw.writeEndElement();
+                xsw.writeEndElement(); // order total
+            xsw.writeEndElement(); // totals
+ 
+        xsw.writeEndElement(); // order
+    }
+ 
+     
+    xsw.writeEndElement();
+    xsw.writeEndDocument();
+ 
+    // close file
+    xsw.close();
+    fileWriter.close();
+ 
+    return PIPELET_NEXT;
+}

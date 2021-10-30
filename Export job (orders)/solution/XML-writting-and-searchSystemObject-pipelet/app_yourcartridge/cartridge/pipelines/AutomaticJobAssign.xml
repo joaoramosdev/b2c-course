@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?demandware-pipeline version="2.0"?>
+
+<pipeline group="StoreCheckout" type="process">
+    <description>Export orders to an XML</description>
+    <branch basename="Start">
+        <segment>
+            <node>
+                <start-node call-mode="private" name="Start" secure="false" />
+                <node-display x="3" y="0" />
+            </node>
+            <simple-transition />
+            <node>
+                <pipelet-node pipelet-name="SearchSystemObject" pipelet-set-identifier="bc_api">
+                    <config-property key="ObjectType" value="Order" />
+                    <config-property key="CaseSensitive" value="false" />
+                    <config-property key="SearchExpression" value="exportStatus={1}" />
+                    <key-binding alias="SearchResult" key="SearchResult" />
+                    <key-binding alias="SearchResultCount" key="SearchResultCount" />
+                    <key-binding alias="null" key="Search1Key" />
+                    <key-binding alias="dw.order.Order.EXPORT_STATUS_NOTEXPORTED" key="Search1Value" />
+                    <key-binding alias="null" key="Search2Key" />
+                    <key-binding alias="null" key="Search2Value" />
+                    <key-binding alias="null" key="Search3Key" />
+                    <key-binding alias="null" key="Search3Value" />
+                    <key-binding alias="null" key="Search4Key" />
+                    <key-binding alias="null" key="Search4Value" />
+                    <key-binding alias="null" key="Search5Key" />
+                    <key-binding alias="null" key="Search5Value" />
+                    <key-binding alias="null" key="SortBy1" />
+                    <key-binding alias="null" key="SortBy1Direction" />
+                    <key-binding alias="null" key="SortBy2" />
+                    <key-binding alias="null" key="SortBy2Direction" />
+                    <key-binding alias="null" key="SortBy3" />
+                    <key-binding alias="null" key="SortBy3Direction" />
+                </pipelet-node>
+                <node-display x="0" y="1" />
+            </node>
+            <simple-transition />
+            <node>
+                <pipelet-node pipelet-name="Script" pipelet-set-identifier="bc_api">
+                    <config-property key="Transactional" value="false" />
+                    <config-property key="OnError" value="PIPELET_ERROR" />
+                    <config-property key="ScriptFile" value="GetNotExportedOrders.ds" />
+                    <key-binding alias="null" key="ScriptLog" />
+                    <key-binding alias="OrdersExported" key="OrdersToExport" />
+                    <key-binding alias="SearchResult" key="OrdersIn" />
+                </pipelet-node>
+                <node-display x="0" y="1" />
+                <branch basename="b2" source-connector="error">
+                    <transition target-connector="in1" target-path="./b3.1">
+                        <transition-display>
+                            <bend-point relative-to="source" x="2" y="0" />
+                        </transition-display>
+                    </transition>
+                </branch>
+            </node>
+            <simple-transition>
+                <transition-display>
+                    <bend-point relative-to="source" x="0" y="1" />
+                </transition-display>
+            </simple-transition>
+            <node>
+                <pipelet-node pipelet-name="ExportOrders" pipelet-set-identifier="bc_api">
+                    <key-binding alias="'exports/orders.xml'" key="ExportFile" />
+                    <key-binding alias="false" key="OverwriteExportFile" />
+                    <key-binding alias="OrdersExported" key="Orders" />
+                    <key-binding alias="null" key="ErrorCode" />
+                    <key-binding alias="null" key="ErrorMsg" />
+                    <key-binding alias="null" key="LogFileName" />
+                    <key-binding alias="null" key="EncryptionAlgorithm" />
+                    <key-binding alias="null" key="EncryptionKey" />
+                    <key-binding alias="null" key="Status" />
+                    <key-binding alias="true" key="UpdateExportStatus" />
+                </pipelet-node>
+                <node-display x="0" y="1" />
+                <branch basename="b3" source-connector="error">
+                    <transition target-connector="in1" />
+                    <segment>
+                        <node>
+                            <join-node />
+                            <node-display x="1" y="0" />
+                        </node>
+                        <simple-transition>
+                            <transition-display>
+                                <bend-point relative-to="source" x="0" y="1" />
+                            </transition-display>
+                        </simple-transition>
+                        <node>
+                            <stop-node />
+                            <node-display x="0" y="1" />
+                        </node>
+                    </segment>
+                </branch>
+            </node>
+            <simple-transition>
+                <transition-display>
+                    <bend-point relative-to="source" x="0" y="1" />
+                </transition-display>
+            </simple-transition>
+            <node>
+                <end-node />
+                <node-display x="0" y="1" />
+            </node>
+        </segment>
+    </branch>
+    <branch basename="_ANONYMOUS_BRANCH_2">
+        <segment>
+            <node>
+                <text-node>
+                    <description>This script returns all Orders that have the "exportStatus" attribute set to "EXPORT_STATUS_NOTEXPORTED" and passes as a parameter object called "OrdersExported".</description>
+                </text-node>
+                <node-display width="3" x="0" y="1" />
+            </node>
+        </segment>
+    </branch>
+    <branch basename="_ANONYMOUS_BRANCH_3">
+        <segment>
+            <node>
+                <text-node>
+                    <description>The ExportOrders Pipelet receives an iterator called "OrdersExported" from the previous script and iterates through it to export an XML of the site's Orders.</description>
+                </text-node>
+                <node-display width="3" x="0" y="2" />
+            </node>
+        </segment>
+    </branch>
+</pipeline>

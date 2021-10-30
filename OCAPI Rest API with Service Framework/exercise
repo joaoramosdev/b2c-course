@@ -1,0 +1,77 @@
+OCAPI Rest API with Service Framework
+Effort: Hard
+Deadline: 16h
+
+Difficulties/learning points:
+
+OCAPI
+Rest API Integration
+Service Framework
+Context:
+
+Commerce Cloud's OCAPI as a Rest API allows anyone with proper credentials to access data from sandboxes and use it as they see fit. This API is very frequently used in projects, making it essential that developers know how to use it.
+
+
+
+Restrictions
+
+If you modify or create a site preference, custom object or service you must update the corresponding metadata file in the repo.
+
+
+Objective:
+
+Using the OCAPI API, search for all products from the Brand Sony and render the results as product tiles (similarly to what you did on exercise 5.2 Product detail page).
+
+
+
+Restrictions:
+
+Your final version should use the Service Framework
+Your search results must have a maximum of 20 hits
+You must refine your search to the electronics category or any of its subcategories
+
+
+Resources:
+
+OCAPI API Tutorial
+
+
+
+Final Result:
+
+
+
+
+
+HINTS
+
+To be able to refine your search by brand you need to create such refinement in your catalog.
+Check the following documentation: 
+https://api-explorer.commercecloud.salesforce.com/?url=https://demo-ocapi.demandware.net/s/SiteGenesis/dw/meta/v1/rest/shop/v18_6
+https://documentation.b2c.commercecloud.salesforce.com/DOC1/topic/com.demandware.dochelp/OCAPI/current/usage/APIExplorer.html
+In order to connect to API explorer you can use default SFCC OCAPI credentials:
+client_id: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+client_password: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+For accessing all OCAPI endpoints in Business Manager for the default client mentioned above, use the following configuration:
+{
+    "_v": "99.9",
+    "clients": [
+        {
+            "client_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "resources": [
+                {
+                    "resource_id": "/**",
+                    "methods": ["get", "put", "post", "patch", "delete"],
+                    "read_attributes": "(**)",
+                    "write_attributes": "(**)"
+                }
+            ]
+        }
+    ]
+}
+Research on http://search.osf.digital
+
+"client_id"
+shop
+product_search
+Refine by project name "ocapi-checkout-demo"

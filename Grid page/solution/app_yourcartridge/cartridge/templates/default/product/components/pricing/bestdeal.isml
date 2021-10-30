@@ -1,0 +1,6 @@
+<isscript>
+    var deal = Math.round(100-finalOrigPrice.sales.decimalPrice*100/finalOrigPrice.list.decimalPrice).toFixed(0);
+</isscript>
+<isset name="deal" value="${deal}" scope="page" />
+ 
+<p class="bestdeal">${Resource.msgf('bestdeal', 'pricing', null,deal)}</p>

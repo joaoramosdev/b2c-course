@@ -1,0 +1,27 @@
+Integrations - Rest API Call with Service Framework
+Effort: Hard
+Deadline: 7h
+
+Difficulties/learning points:
+
+Rest API Integration
+Service Framework
+Objective:
+
+Create a new REST API Service with the usage of Service Framework (dw.svc classes). and https://www.flickr.com/services/api/ 
+
+Restrictions
+
+If you modify or create a site preference, custom object, or service you must update the corresponding metadata file in the repo.
+
+
+Final Result:
+
+
+
+
+
+HINTS
+
+Start from this documentation and explore the dw.svc classes. 
+The section Creating Service Registry in Documentation refers to the way it’s done with Pipelines. With Controllers, you won’t need the package.json to initialize your Service. Instead, use the following Controller file to be able to configure your Service FlickrServiceRegistryGet.js

@@ -1,0 +1,5 @@
+<isif condition="${pdict.grandTotal > 200}">
+    <div class="col-sm-7 col-md-8 btn-warning">
+        ${Resource.msgf('warning.cart.exercise3', 'cart', null,pdict.grandTotal.decimalValue)}
+    </div>
+</isif>

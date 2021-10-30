@@ -1,0 +1,35 @@
+Automatic Category assignation
+Effort: Medium-Hard
+Deadline: 7h
+Difficulties/learning points:
+
+Class File
+Class FileWriter
+Class XMLIndentingStreamWriter
+
+Objective:
+
+Create a job that runs a javascript function (backend) that takes all products that have a certain brand (the brand is specified through a job parameter) and assigns them to a category of your choice. The javascript function creates an XML file that assigns all the products to the above-mentioned category. Please comment on your code.
+
+Restrictions
+
+If you modify or create a site preference, system/custom object, service, content slot, content asset or any other system configuration you must update the corresponding metadata file in the repo.
+
+
+Tips:
+
+Before you start working with Jobs please review the following document (!) Hello World example in SFCC Jobs.docx
+Place your javascript file inside of scripts/job folder with .js extension 
+Check that the XML file was correctly written by manually importing it with Site Import. If it assigns products correctly then you import the XML file automatically with the ImportCatalog pipelet (MERGE).
+To find out the XML tag that assigns products to a category, please export the storefront catalog from site import/export. Leave just the assignment tags in your XML file along with the compulsory elements for any XML file. It will merge with the current storefront catalog.
+For the job to work you need to add your cartridge to the BM cartridge path
+Make sure you add the cartridge to the BM cartridge path otherwise the job won't find it.
+PAY ATTENTION --> SITEGENESIS PATH IS NOT THE SAME AS BM PATH
+https://trailhead.salesforce.com/content/learn/modules/b2c-admin-create-and-manage-jobs
+Research on http://search.osf.digital
+
+How to export metadata from your sandbox
+File.IMPEX
+File.SEPARATOR
+XMLStreamWriter
+AddRefinementValues

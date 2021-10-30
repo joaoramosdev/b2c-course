@@ -1,0 +1,26 @@
+Grid page modifications
+Effort: Easy
+Deadline: 4h
+Difficulties/learning points:
+
+ISML templates
+Resource.msgf
+Find and update .isml template which is responsible for PLP (product list page)
+Objective:
+
+Modify the product tile for products that have a sale price to show a custom message (“Best Deal”). Also, calculate the percentage of discount between the standard price and the sale price and display it.
+
+HINTS
+
+Do not hardcode strings in templates. Use Resource Bundles (<name>.properties files and define there your string).
+Learn how to use Resource.msgf 
+Use the Storefront Toolkit to find out which template to modify
+Before writing the logic to calculate the discount, think! Is your customization unique to this context? Will it be reused on other places?
+
+
+Research on http://search.osf.digital
+
+
+When to use Content Assets or Resource Bundles
+Resource.msgf
+Is Resource.msg / msgf able to interpret line breaks?

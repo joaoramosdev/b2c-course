@@ -1,0 +1,31 @@
+Cart exercise - Modal Pop-up + Ajax
+Effort: Medium-Hard
+Deadline: 10h
+Difficulties/learning points:
+
+HTML5
+Jquery Event Listeners
+AJAX
+Objective:
+
+You are going to reuse your solution from exercise 5.5 Newsletter to implement the solution for this exercise.
+
+But, this time, the architect in your team decided that it is always important to check a user's action before really executing it.
+
+Since we are using a modern framework, not only you are required to ask confirmation from the user, but you also need to use a spinner to pass to the user the feeling that some processing is happening while he waits. While the spinner is in progress, you will use AJAX to call your controller from the previous exercise to validate the newsletter.
+
+Finally, this time instead of your controller rendering a template, it should return a JSON that will be validated in the frontend and if everything went well, you will redirect the user to the homepage, otherwise, you will highlight the fields that contain an error
+
+Final Result: 
+
+
+HINTS
+
+Check examples on how to capture form submissions, AJAX usage, and spinner loading effect inside of  app_yourcartridge/client/js
+https://learninghub.osf.digital/mod/page/view.php?id=354
+Research on http://search.osf.digital
+
+processInclude
+submitProfile
+spinner
+formvalidation

@@ -1,0 +1,30 @@
+Cart Page - custom message
+Effort: Easy
+Deadline: 4h
+Difficulties/learning points:
+
+Use Resource.msg in order to display the message.
+Template Include
+Controllers Include
+Extend Controllers
+Get info from Basket
+Objective:
+
+Display a message on the cart page if the customer has over 200 dollars in the cart.
+
+
+
+Restrictions:
+
+Retrieve the threshold value from Site Preferences
+The displayed image must have a yellow-like background to look like a warning
+Final Result:
+
+
+
+Research on http://search.osf.digital
+
+URLUtils.https
+Resource.msgf
+decimalValue
+BasketMgr.getCurrentBasket

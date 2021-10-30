@@ -1,0 +1,53 @@
+/**
+*   This script is responsible for:
+*   1. building an xml file by iterating through a list of products
+*   2. save the file in impex/src folder
+*   @input ProductSearchModel : Object This is the product search model
+*   @output FileName: string This is the fileName to be imported
+*/
+  
+var File = require('dw/io/File');
+var FileWriter = require('dw/io/FileWriter');
+var XMLStreamWriter = require('dw/io/XMLStreamWriter');
+  
+function execute( args: PipelineDictionary ) : Number
+{
+    let brand = args.brand;
+    let search = new ProductSearchModel();
+ 
+    // Search the products filtered by brand
+    search.addRefinementValues('brand', brand);
+    search.search();
+    let products = search.getProducts();
+  
+    // write category assignments to xml file
+    var file = new File(File.IMPEX + File.SEPARATOR + 'src'+ File.SEPARATOR + 'catalog' + File.SEPARATOR + 'catalog.xml');
+    var fileWriter = new FileWriter(file, "UTF-8");
+    var xsw = new XMLStreamWriter(fileWriter);
+  
+    xsw.writeStartElement("catalog");
+    xsw.writeAttribute("catalog-id", "storefront-catalog-m-en");
+    xsw.writeAttribute("xmlns", "http://www.demandware.com/xml/impex/catalog/2006-10-31");
+  
+  
+    while(products.hasNext()) {
+  
+        var product = products.next();
+        xsw.writeStartElement("category-assignment");
+        xsw.writeAttribute("category-id", "test");
+        xsw.writeAttribute("product-id", product.ID);
+         xsw.writeStartElement("primary-flag");
+          xsw.writeCharacters("true");
+         xsw.writeEndElement();
+        xsw.writeEndElement();
+    }
+  
+    xsw.writeEndElement();
+    xsw.writeEndDocument();
+  
+    // close file
+    xsw.close();
+    fileWriter.close();
+  
+    return PIPELET_NEXT;
+}

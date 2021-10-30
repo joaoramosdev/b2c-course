@@ -1,0 +1,54 @@
+Integrations - Facebook Graph API
+Effort: Hard
+Deadline: 18h
+
+Difficulties/learning points:
+
+Facebook Graph API
+HTTP Requests
+
+
+Restrictions
+
+Consider that a server-to-server web call should be written from scratch in SFCC. Using the HTTPClient class is recommended.
+Do not use anything related to “Oauth2” as that will remain used for the social login feature. That is a separate item and should not be considered.
+If you modify or create a site preference, custom object, or service you must update the corresponding metadata file in the repo.
+
+
+Context:
+
+The Graph API is the primary way that data is retrieved or posted to Facebook. The Getting Started Guide contains an overview of the basics of the API, walks you through using the Graph API Explorer, shows you how names work, how permissions work, what connections are and puts it all together so the rest of this reference makes sense.
+
+Very often companies use social media to process information from users to identify their interests and deliver personalized marketing content to them(check the concept of Micro Targeting).
+
+Objective:
+
+ Your job now is to make use of Facebook's Graph API to retrieve a user's data and display it on a page.
+
+You can retrieve and display as much information from the user as you want but a minimum set is mandatory for this exercise:
+
+ID
+Name
+Email
+Profile Picture
+Extra: Display the profile picture with a minimum width of 300 px.
+
+Resources:
+
+https://developers.facebook.com/tools/explorer/
+https://developers.facebook.com/docs/graph-api/using-graph-api
+Final Result:
+
+
+
+
+
+
+
+
+
+HINTS
+
+Before being able to retrieve code/token, you first need to create an account at Facebook Developer: https://developers.facebook.com 
+Don't hardcode the access token. It must be retrieved each time you submit the form.
+https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow

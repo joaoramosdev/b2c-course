@@ -1,0 +1,48 @@
+Export job: orders
+
+Effort: Medium
+Deadline: 6h
+Difficulties/learning points:
+
+Class Order
+Class OrderMgr 
+Pre-Requisite: Before starting this exercise make sure you complete the following module on trailhead: Salesforce B2C Commerce Scheduled Jobs
+
+Objective:
+
+Create a job that calls a javascript function (backend) that takes all orders that are not exported and writes an XML for each of them containing: order number, customer name, customer number -  if available, customer email, date created, total amount, list of payment methods, list of ids of products bought. The XML file needs to be written in the Impex/src/exports folder, incorrect site genesis XML format.
+
+In order to complete this exercise, you should create a few real orders on the Storefront, by proceeding with checkout in the next order: Choosing Product(s) > Shipping > Billing > Place Order. Then export the XML file with orders for seeing the real example.
+
+As an alternative, you can use this file: orders.xml
+
+Restrictions
+
+If you modify or create a site preference, system/custom object, service, content slot, content asset or any other system configuration you must update the corresponding metadata file in the repo.
+Pass the destination folder as a job parameter
+Final Result:
+
+  
+
+Play Video
+ 
+HINTS
+
+To export your orders go to Merchant Tools-->Ordering-->Import & Export.
+You can use these fake credit cards to create an order: https://www.paypalobjects.com/en_AU/vhelp/paypalmanager_help/credit_card_numbers.htm
+Place your javascript file inside of scripts/job
+For the job to work you need to add your cartridge to the BM cartridge path
+Make sure you add the cartridge to BM cartridge path otherwise the job won't find it.
+PAY ATTENTION --> SITEGENESIS PATH IS NOT THE SAME AS BM PATH
+You can import this list of orders if you don't want to waste time creating multiple orders to test your logic:exported_orders.xml
+The methods you will need to use to retrieve data from the customer and order can be looked up in the official documentation for the Order Class in here: Class Order
+Keep in mind that not all methods are defined in the Order Class. Some might have been inherited from other class, so pay attention to that.
+Research on http://search.osf.digital
+
+How to export metadata from your sandbox
+File.IMPEX
+File.SEPARATOR
+OrderMgr
+Awkward server fault error on searchOrders
+XMLStreamWriter
+FileWriter

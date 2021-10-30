@@ -1,0 +1,79 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/account/profile.css');
+    </isscript>
+    <div class="hero slant-down account-image">
+        <h1 class="page-title">Newsletter</h1>
+    </div>
+    <div class="container">
+        <!---Breadcrumbs--->
+        <isinclude template="components/breadcrumbs/pageBreadcrumbs" />
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="${URLUtils.url('Newsletter-Subscribe')}" class="newsletter-form" method="POST"
+                          <isprint value="${pdict.newsletterForm.attributes}"encoding="off" />>
+ 
+                        <!-- Email -->
+                        <div class="form-group
+                            ${pdict.newsletterForm.email.mandatory === true ? 'required' : ''}">
+                            <label class="form-control-label" for="email">
+                                ${Resource.msg('label.input.email', 'newsletter', null)}
+                            </label>
+                            <input type="text" class="form-control" id="email"
+                                  <isprint value="${pdict.newsletterForm.email.attributes}" encoding="off"
+                            />>
+                            <div class="invalid-feedback"></div>
+ 
+                            <!-- Name -->
+                            <div class="row">
+                                <!-- First Name -->
+                                <div class="col-6">
+                                    <div class="form-group
+                                    ${pdict.newsletterForm.firstName.mandatory === true ? 'required' : ''}">
+                                        <label class="form-control-label" for="firstName">
+                                            ${Resource.msg('label.input.firstname', 'newsletter', null)}
+                                        </label>
+                                        <input type="text" class="form-control" id="firstName"
+                                            <isprint value="${pdict.newsletterForm.firstName.attributes}" encoding="off"
+                                        /> >
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <div class="row">
+                                <!-- Last Name -->
+                                <div class="col-6">
+                                    <div class="form-group
+                                    ${pdict.newsletterForm.lastName.mandatory === true ? 'required' : ''}">
+                                        <label class="form-control-label" for="lastName">
+                                            ${Resource.msg('label.input.lastname', 'newsletter', null)}
+                                        </label>
+                                        <input type="text" class="form-control" id="lastName"
+                                            <isprint value="${pdict.newsletterForm.lastName.attributes}" encoding="off"
+                                        /> >
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <!-- Subscribe Buttons -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" name="save" class="btn btn-save btn-block btn-primary">
+                                        ${Resource.msg('button.save','account',null)}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</isdecorate>

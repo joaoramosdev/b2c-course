@@ -1,0 +1,27 @@
+Integrations - SOAP Service (Currency Converter)
+Effort: Medium
+Deadline: 12h
+
+Objective: 
+
+The goal of this implementation is to help you get familiar with the way SOAP web services are integrated into SFCC by using a simple and straightforward currency converter API: http://www.infovalutar.ro/curs.asmx?wsdl
+
+Additional details about API
+The web service provides the value of the RON currency compared to other currencies available out there, e.g. EUR, USD, CAD, etc.
+
+Requirements
+Use the currency converter API for displaying on the cart page the total price of a basket in RON. This should be displayed next to the basket total price in the session's currency, e.g. 99.99 EUR / 487.41 RON (assuming a rate of 4.8746 RON for 1 EUR)
+
+Final Result: 
+
+
+
+HINTS
+
+
+Unfortunately, the WSDL above has some bugs please use the updated WSDL file ---> infovalutar.wsdl
+An example of SOAP API ---> https://community.osf.digital/topic/3246-adobe-campaign-classic-soap-service-integration-guide/?tab=comments#comment-12544
+https://documentation.b2c.commercecloud.salesforce.com/DOC1/topic/com.demandware.dochelp/content/b2c[…]erce/topics/web_services/b2c_webservices.html
+The WSDL file must be created in your cartridge. You could make a copy from the WSDL from the server.
+Pay attention about the parameters in order get the service from this web-reference. https://documentation.b2c.commercecloud.salesforce.com/DOC1/topic/com.demandware.dochelp/DWAPI/scrip[…]%65%22%20%22%67%65%74%73%65%72%76%69%63%22%20
+https://documentation.b2c.commercecloud.salesforce.com/DOC1/index.jsp?topic=%2Fcom.demandware.dochel[…]bservices.html&resultof=%22%73%6f%61%70%22%20
