@@ -1,0 +1,40 @@
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="Currency credentials">
+        <url>http://www.infovalutar.ro/curs.asmx?wsdl</url>
+        <user-id />
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-profile service-profile-id="currency profile">
+        <timeout-millis>1000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service service-id="custom.http.infovalutar.GetLatestValue">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>infovalutar</log-prefix>
+        <comm-log-enabled>false</comm-log-enabled>
+        <force-prd-enabled>true</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>currency profile</profile-id>
+        <credential-id>Currency credentials</credential-id>
+    </service>
+
+    <service service-id="custom.soap.infovalutar.GetLatestValue">
+        <service-type>SOAP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>infovalutar</log-prefix>
+        <comm-log-enabled>false</comm-log-enabled>
+        <force-prd-enabled>true</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>currency profile</profile-id>
+        <credential-id>Currency credentials</credential-id>
+    </service>
+
+</services>
