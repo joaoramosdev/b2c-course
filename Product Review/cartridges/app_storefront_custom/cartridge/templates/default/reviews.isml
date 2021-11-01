@@ -1,0 +1,10 @@
+<div>
+    <h3 class="text-center mb-2">${Resource.msg('label.productReviews','review',null)}</h3>
+    <isloop items="${pdict.reviews}" var="review" status="loopstatus">
+        <div class="border-top border-dark ">
+            <h6>${Resource.msg('label.score','review',null)}: ${review.custom.mark}</h6>
+            <p>${Resource.msg('label.comment','review',null)}: ${review.custom.feedback}</p>
+            <h6>${Resource.msg('label.userId','review',null)} ${review.custom.customerID}</h6>
+        </div>
+    </isloop>
+</div>

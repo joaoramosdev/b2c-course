@@ -1,0 +1,30 @@
+<isdecorate template="application/MenuFrame">
+ <isif condition="${!empty(pdict.reviews)}">
+   <table border="1">
+        <thead>
+            <tr>
+              <th><input type="checkbox" name="approve" id="approveAll"></th>
+              <th>${Resource.msg('label.productId','review',null)}</th>
+              <th>${Resource.msg('label.comment','review',null)}</th>
+              <th>${Resource.msg('label.score','review',null)}</th>
+            </tr>
+        </thead>
+ 
+        <tbody>
+            <isloop var="review" items="${pdict.reviews}">
+                <tr class="table-item">
+                    <td><input type="checkbox" name="approve" id="${review.custom.id}" value="${review.custom.id}"></td>
+                    <td>${review.custom.productId}</td>
+                    <td>${review.custom.feedback}</td>
+                    <td>${review.custom.mark}</td>
+                </tr>
+            </isloop>
+        </tbody>
+  </table>
+  <input type="hidden" name="" id="approveUrl" value="${URLUtils.url('CheckReviews-Approve')}">
+  <button type="" class="btn btn-primary" id="submitApprove" style="margin-top: 15px;">${Resource.msg('label.approve','review',null)}</button> 
+  <iselse>
+  </iselse>
+</isif>
+ <script src="${URLUtils.staticURL('/js/reviewBM.js')}"></script>
+</isdecorate>

@@ -1,0 +1,28 @@
+{
+    "step-types": {
+        "script-module-step": [{
+            "@type-id": "custom.TotalMark",
+            "module": "app_storefront_custom/cartridge/scripts/job/totalMark.js",
+            "description": "Counts the average mark.",
+            "function": "Run",
+            "parameters": {
+ 
+            },
+            "status-codes": {
+                "status": [{
+                        "@code": "ERROR",
+                        "description": "Used when an error occurred."
+                    },
+                    {
+                        "@code": "OK",
+                        "description": "Used when execution was successful."
+                    },
+                    {
+                        "@code": "NO_FILE_FOUND",
+                        "description": "Used when no file could be found in the source directory."
+                    }
+                ]
+            }
+        }]
+    }
+}

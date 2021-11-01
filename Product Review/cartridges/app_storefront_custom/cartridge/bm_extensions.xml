@@ -1,0 +1,17 @@
+<extensions xmlns="http://www.demandware.com/xml/bmmodules/2007-12-11" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.demandware.com/xml/bmmodules/2007-12-11 bmext.xsd">
+    <menuitem id="my-menu-item" site="true">
+        <name xml:lang="x-default">Product Review</name>
+        <short_description xml:lang="x-default">Product Review</short_description>
+        <description xml:lang="x-default">Product review</description>
+    </menuitem>
+
+    <menuaction id="my-menu-action" menupath="my-menu-item" site="true">
+        <name xml:lang="x-default">Check reviews</name>
+        <short_description xml:lang="x-default">Check and approve reviews</short_description>
+        <description xml:lang="x-default">Check and approve reviews</description>
+        <exec pipeline="CheckReviews" node="Start" />
+        <sub-pipelines>
+            <pipeline name="CheckReviews" />
+        </sub-pipelines>
+    </menuaction>
+</extensions>

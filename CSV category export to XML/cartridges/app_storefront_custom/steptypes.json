@@ -1,0 +1,57 @@
+{
+    "step-types": {
+        "script-module-step": [{
+            "@type-id": "custom.ProductsCSV",
+            "module": "app_storefront_custom/cartridge/scripts/job/productsCSV.js",
+            "description": "Writes into .CSV file the information about products.",
+            "function": "Run",
+            "parameters": {
+                "parameter": [{
+                    "@name": "categoryID",
+                    "description": "Products category",
+                    "@type": "string",
+                    "@required": "true",
+                    "@trim": "true"
+                }]
+            },
+            "status-codes": {
+                "status": [{
+                        "@code": "ERROR",
+                        "description": "Used when an error occurred."
+                    },
+                    {
+                        "@code": "OK",
+                        "description": "Used when execution was successful."
+                    },
+                    {
+                        "@code": "NO_FILE_FOUND",
+                        "description": "Used when no file could be found in the source directory."
+                    }
+                ]
+            }
+        },
+            {
+            "@type-id": "custom.ProductsXML",
+            "module": "app_storefront_custom/cartridge/scripts/job/productsXML.js",
+            "description": "Writes into .XML file the information about products.",
+            "function": "Run",
+            "parameters": {
+            },
+            "status-codes": {
+                "status": [{
+                        "@code": "ERROR",
+                        "description": "Used when an error occurred."
+                    },
+                    {
+                        "@code": "OK",
+                        "description": "Used when execution was successful."
+                    },
+                    {
+                        "@code": "NO_FILE_FOUND",
+                        "description": "Used when no file could be found in the source directory."
+                    }
+                ]
+            }
+        }]
+    }
+}

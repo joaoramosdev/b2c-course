@@ -1,0 +1,12 @@
+<attribute-definition attribute-id="giftCoordinates">
+    <display-name xml:lang="x-default">Gift Coordinates</display-name>
+    <description xml:lang="x-default">Top left latitude & longitude coordinates in format: 50.1234,25.1234</description>
+    <type>string</type>
+    <mandatory-flag>false</mandatory-flag>
+    <externally-managed-flag>false</externally-managed-flag>
+    <min-length>0</min-length>
+</attribute-definition>
+<attribute-group group-id="Training">
+    <display-name xml:lang="x-default">Training</display-name>
+    <attribute attribute-id="giftCoordinates" />
+</attribute-group>

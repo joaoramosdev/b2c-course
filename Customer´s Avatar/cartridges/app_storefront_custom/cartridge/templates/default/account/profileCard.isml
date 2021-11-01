@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header clearfix">
+        <h2 class="pull-left profile-header">${Resource.msg('label.profile','account',null)}</h2>
+        <isif condition="${!pdict.account.isExternallyAuthenticated}">
+            <a href="${URLUtils.url('Account-EditProfile')}" class="pull-right" aria-label="${Resource.msg('label.profile.edit','account',null)}">${Resource.msg('link.edit','account',null)}</a>
+        </isif>
+    </div>
+    <div class="card-body">
+        <isif condition="${!empty(customer.profile.custom.avatar)}">
+            <dl>
+                <dt> ${Resource.msg('label.yourAvatar','account',null)}</dt>
+                <dd><img src="${customer.profile.custom.avatar}" alt="" style="max-height: 200px; max-width: 250px;"></dd>
+            </dl>
+        </isif>
+        <dl>
+            <dt><a class="btn btn-primary" href=" ${URLUtils.url('File-UploadForm')}">${Resource.msg('label.newAvatar','account',null)}</a></dt>
+        </dl>
+        <dl>
+            <dt>${Resource.msg('label.profile.firstname','account',null)}</dt>
+            <dd>${pdict.account.profile.firstName}</dd>
+        </dl>
+        <dl>
+            <dt>${Resource.msg('label.profile.lastname','account',null)}</dt>
+            <dd>${pdict.account.profile.lastName}</dd>
+        </dl>
+        <dl>
+            <dt>${Resource.msg('label.profile.email','account',null)}</dt>
+            <dd>${pdict.account.profile.email}</dd>
+        </dl>
+        <isif condition="${!pdict.account.isExternallyAuthenticated}">
+            <dl>
+                <dt>${Resource.msg('label.profile.phone','account',null)}</dt>
+                <dd>${pdict.account.profile.phone}</dd>
+            </dl>
+        </isif>
+ 
+    </div>
+</div>

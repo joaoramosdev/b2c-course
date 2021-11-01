@@ -1,0 +1,56 @@
+<div class="line-item-header">
+    <!--- product name--->
+    <div class="line-item-name d-flex justify-content-between">
+        <div class="col-11 overflow-hidden">${item.name}</div>
+        <a href="${'#0'}" data-toggle="modal" data-target="${'#modal-'+item.pid}" title="${Resource.msg('move', 'wishlist', null)}">
+            <i class="fa fa-retweet"></i>
+        </a>
+    </div>
+    <isif condition=${!pdict.wishlist.publicView}>
+        <!--- remove wishlist icon--->
+        <div class="d-lg-none"> <!---hide lg and xl--->
+        <button type="button" class="remove-btn remove-from-wishlist btn btn-light"
+            data-url="${URLUtils.url('Wishlist-RemoveProduct','pid', item.pid)}"
+            aria-label="remove">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="hidden-md-down"> <!---hide medium, sm, xs--->
+        <button type="button" class="remove-btn-lg remove-from-wishlist btn btn-light"
+            data-url="${URLUtils.url('Wishlist-RemoveProduct','pid', item.pid)}"
+            aria-label="remove">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+    </isif>
+ 
+    <iscomment> <isloop items="${pdict.wishlists}" var="wl">
+        <isif condition="${wishlist.UUID != wl.UUID}">
+            <a href="#" class="btn btn-outline-primary">${wishlist.name}</a>
+            <a href="#" class="btn btn-outline-primary">${wl.name}</a>
+        </isif>
+    </isloop> </iscomment>
+ 
+    <!-- Modal -->
+    <isif condition="${pdict.wishlists.length > 1}">
+        <div class="modal fade" id="modal-${item.pid}" tabindex="-1" role="dialog" aria-labelledby="${item.pid}ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="${item.pid}ModalLabel">${Resource.msg('move', 'wishlist', null)}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <isloop items="${pdict.wishlists}" var="wl">
+                    <isif condition="${wishlist.UUID != wl.UUID}">
+                        <a href="${URLUtils.url('Wishlist-MoveProduct', 'oldList', wishlist.UUID, 'newList', wl.UUID, 'pid', item.pid)}" class="wishlist-move btn btn-outline-primary">${wl.name}</a>
+                    </isif>
+                </isloop>
+            </div>
+            </div>
+        </div>
+        </div>
+    </isif>
+</div>

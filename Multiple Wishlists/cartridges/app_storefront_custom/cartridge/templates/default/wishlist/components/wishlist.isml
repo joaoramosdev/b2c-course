@@ -1,0 +1,45 @@
+<div class="row justify-content-center ">
+    <isloop items="${pdict.wishlists}" var="wishlist">
+        <div class="col-sm-8 col-md-6">
+            <div class="wishlist-header d-flex flex-nowrap align-items-center">
+                <a href="${URLUtils.url('Wishlist-Remove', 'UUID', wishlist.UUID)}" class="btn btn-outline-danger mr-3">×</a>
+                <h2 class="wishlist-owner">${wishlist.name}</h2>
+                <form class="wishlist-name-form" action="${URLUtils.url('Wishlist-Rename')}">
+                    <input name="name" type="text" placeholder="${wishlist.name}" class="wishlist-input-name py-1" />
+                    <input name="UUID" type="text" value="${wishlist.UUID}" hidden />
+                    <button type="submit" class="btn btn-outline-success">${Resource.msg('rename', 'wishlist', null)}</button>
+                </form>
+            </div>
+            <iscomment> <isif condition=${!wishlist.publicView}>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="custom-control custom-checkbox wishlist-hide">
+                            <input ${!wishlist.publicList ? 'checked="checked"' : ''} class="custom-control-input" type="checkbox" value="" id="isPublicList" name="isPublicList" data-id="${wishlist.UUID}" data-url="${URLUtils.url('ProductList-TogglePublic', 'type', 10)}">
+                            <label for="isPublicList" class="custom-control-label wishlist-checkbox">
+                                ${Resource.msg('checkbox.makePublic', 'wishlist', null)}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </isif> </iscomment>
+            <isinclude template="wishlist/components/list">
+            <iscomment> <isif condition=${!wishlist.publicView}>
+                <div class="my-account text-center col-12">
+                    <a href="${URLUtils.url('Account-Show')}" title="${Resource.msgf('link.wishlist.myaccount', 'wishlist', null)}">
+                        ${Resource.msgf('link.wishlist.myaccount', 'wishlist', null)}
+                    </a>
+                </div>
+            </isif> </iscomment>
+        </div>
+    </isloop>
+</div>
+ 
+<isif condition="${pdict.wishlists.length < 3}">
+    <div class="row justify-content-center mb-3">
+        <button class="wishlist-new btn btn-outline-primary">${Resource.msgf('create.wishlist', 'wishlist', null)}</button>
+        <form class="wishlist-name-form" action="${URLUtils.url('Wishlist-New')}">
+            <input name="name" type="text" placeholder="${Resource.msg('wishlist.name', 'wishlist', null)}" class="py-1" />
+            <button type="submit" class="btn btn-outline-success">${Resource.msg('create.wishlist', 'wishlist', null)}</button>
+        </form>
+    </div>
+</isif>

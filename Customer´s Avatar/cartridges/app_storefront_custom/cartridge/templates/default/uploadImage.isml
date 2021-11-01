@@ -1,0 +1,8 @@
+<isdecorate template="common/layout/page">
+<div class="container mt-5 mb-5">
+    <form action="${URLUtils.url('File-Upload')}" enctype="multipart/form-data" method="post" style="padding-left: 10px">
+        <input size="40" name="image" type="file" />
+        <input type="submit" name="add" value="Upload" />
+    </form>
+</div>
+</isdecorate>
