@@ -1,0 +1,13 @@
+<isdecorate template="common/layout/page">
+ 
+<div class="row product-grid" itemtype="http://schema.org/SomeProducts" itemid="#product">
+    <isloop items="${pdict.ocapiData.hits}" var="product">
+        <div class="col-4 col-sm-3">
+            <isobject object="${product}" view="tile">
+                <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.product_id,
+                  'swatches', true, 'ratings', true, 'showQuickView', true,'isSearch', true)}" />
+            </isobject>
+        </div>
+    </isloop>
+</div>
+</isdecorate>
